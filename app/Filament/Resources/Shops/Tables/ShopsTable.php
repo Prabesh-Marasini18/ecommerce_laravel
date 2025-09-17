@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Shops\Tables;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -21,7 +22,7 @@ class ShopsTable
                     ->searchable(),
                 TextColumn::make('phone')
                     ->searchable(),
-                TextColumn::make('photo')
+                ImageColumn::make('photo')
                     ->searchable(),
                 TextColumn::make('status')
                     ->searchable(),
