@@ -2,8 +2,10 @@
 
 namespace App\Observers;
 
+use App\Mail\ShopCredentialNotification;
 use App\Models\Shop;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class ShopObserver
 {
@@ -24,6 +26,9 @@ class ShopObserver
             $password = rand(11111, 99999);
             $shop->password = Hash::make($password);
             $shop->saveQuietly();
+            Mail::to($shop->email)->send(new ShopCredentialNotification($shop, $password));
+
+
         }
     }
 
