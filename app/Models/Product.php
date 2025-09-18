@@ -7,11 +7,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Product extends Model
 {
-    /**
-     * Get the shop that owns the Product
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
+    protected $casts=[
+        'images' => 'array',
+    ]; 
     public function shop(): BelongsTo
     {
         return $this->belongsTo(Shop::class);

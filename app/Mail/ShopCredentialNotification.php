@@ -13,12 +13,16 @@ class ShopCredentialNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $shop;
+    public $password;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($shop, $password)
     {
-        //
+        $this->shop = $shop;
+        $this->password = $password;
     }
 
     /**
@@ -37,7 +41,7 @@ class ShopCredentialNotification extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'mail.shop-credential-notification',
         );
     }
 
