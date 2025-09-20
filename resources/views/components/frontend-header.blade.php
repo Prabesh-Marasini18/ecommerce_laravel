@@ -21,20 +21,23 @@
 
       <!-- Logo -->
       <div class="flex items-center space-x-2 cursor-pointer">
-        <img src="{{asset (Storage::url($company->logo))}}" alt="Logo" class="w-10 h-10">
+        <a href="{{route('home')}}">
+            <img src="{{asset (Storage::url($company->logo))}}" alt="Logo" class="w-10 h-10">
         <span class="text-2xl font-bold text-[var(--primary)]">{{$company->name}}</span>
+        </a>
       </div>
 
     <!-- Search Bar -->
     <div class="hidden md:flex mx-6 w-120">
-    <input
-        type="text"
-        placeholder="Search products..."
-        class="w-full px-4 py-2 border border-[var(--primary)] rounded-l-full focus:outline-none focus:ring-2 focus:ring-[var(--secondary)]"
-    />
-    <button class="bg-[var(--primary)] text-white px-5 rounded-r-full hover:bg-[var(--secondary)] transition">
-        <i class="fa-solid fa-magnifying-glass"></i>
-    </button>
+   <form action="{{route('search')}}" method="get" class="flex w-full">
+   <input
+    type="text"
+    placeholder="Search products..." name="q"
+    class="w-full px-4 py-2 border border-[var(--primary)] rounded-l-full focus:outline-none focus:ring-2 focus:ring-[var(--secondary)]"/>
+  <button class="bg-[var(--primary)] text-white px-5 rounded-r-full hover:bg-green-500 transition flex items-center">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+   </form>
     </div>
 
 
